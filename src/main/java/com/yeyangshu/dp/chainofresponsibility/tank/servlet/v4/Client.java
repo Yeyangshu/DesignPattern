@@ -1,8 +1,7 @@
-package com.yeyangshu.dp.chainofresponsibility.tank.servlet.v1;
+package com.yeyangshu.dp.chainofresponsibility.tank.servlet.v4;
 
 /**
- * 将对 message 的处理更改为处理 request，response
- * 暂未处理 response
+ * 完全模式 Servlet 中的 FilterChain
  *
  * @author yeyangshu
  * @version 1.0
@@ -14,16 +13,16 @@ public class Client {
         Request request = new Request();
         request.str = "大家好:)，<script>，欢迎访问 mashibing.com ，大家都是996 ";
         Response response = new Response();
-        response.str = "";
+        response.str = "response";
         // 对用户的消息进行处理
         // 链式编程
         FilterChain filterChain = new FilterChain();
         filterChain.add(new HTMLFilter()).add(new SensitiveFilter());
-
         // 处理Filter
         filterChain.doFilter(request, response);
 
         System.out.println(request.str);
+        System.out.println(response.str);
 
     }
 }

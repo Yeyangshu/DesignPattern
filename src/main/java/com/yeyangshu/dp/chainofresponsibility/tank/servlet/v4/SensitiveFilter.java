@@ -1,4 +1,4 @@
-package com.yeyangshu.dp.chainofresponsibility.tank.servlet.v1;
+package com.yeyangshu.dp.chainofresponsibility.tank.servlet.v4;
 
 /**
  * @author yeyangshu
@@ -14,8 +14,10 @@ public class SensitiveFilter implements Filter {
      * @return
      */
     @Override
-    public boolean doFilter(Request request, Response response) {
+    public boolean doFilter(Request request, Response response, FilterChain chain) {
         request.str = request.str.replaceAll("996", "955");
+        chain.doFilter(request, response);
+        response.str += "--SensitiveFilter()";
         return true;
     }
 }

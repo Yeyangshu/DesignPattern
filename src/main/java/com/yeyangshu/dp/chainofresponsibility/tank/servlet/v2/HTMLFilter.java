@@ -1,13 +1,13 @@
-package com.yeyangshu.dp.chainofresponsibility.tank.servlet.v1;
+package com.yeyangshu.dp.chainofresponsibility.tank.servlet.v2;
 
 /**
  * @author yeyangshu
  * @version 1.0
  * @date 2020/11/29 19:08
  */
-public class SensitiveFilter implements Filter {
+public class HTMLFilter implements Filter {
     /**
-     * 处理消息中的敏感词
+     * 处理消息中的 HTML
      *
      * @param request
      * @param response
@@ -15,7 +15,8 @@ public class SensitiveFilter implements Filter {
      */
     @Override
     public boolean doFilter(Request request, Response response) {
-        request.str = request.str.replaceAll("996", "955");
+        request.str = request.str.replaceAll("<", "[").replaceAll(">", "]");
+        response.str += "--HTMLFilter()";
         return true;
     }
 }

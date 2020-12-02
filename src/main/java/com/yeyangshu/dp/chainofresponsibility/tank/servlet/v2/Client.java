@@ -1,8 +1,9 @@
-package com.yeyangshu.dp.chainofresponsibility.tank.servlet.v1;
+package com.yeyangshu.dp.chainofresponsibility.tank.servlet.v2;
 
 /**
- * 将对 message 的处理更改为处理 request，response
- * 暂未处理 response
+ * 如何处理 response？
+ * 用最直观的方式处理response：直接将response的处理放在request的下面
+ * 但是不能实现 servlet 功能
  *
  * @author yeyangshu
  * @version 1.0
@@ -24,6 +25,7 @@ public class Client {
         filterChain.doFilter(request, response);
 
         System.out.println(request.str);
+        System.out.println(response.str);
 
     }
 }
